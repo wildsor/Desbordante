@@ -4,11 +4,10 @@
 
 #include "core/algorithms/md/decision_boundary.h"
 #include "core/model/index.h"
-#include "core/util/export.h"
 
 namespace model::md {
 
-class DESBORDANTE_EXPORT ColumnSimilarityClassifier {
+class ColumnSimilarityClassifier {
 private:
     Index column_match_index_;
     DecisionBoundary decision_boundary_;

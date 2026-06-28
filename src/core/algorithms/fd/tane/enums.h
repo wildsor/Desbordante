@@ -2,10 +2,8 @@
 
 #include <magic_enum/magic_enum.hpp>
 
-#include "core/util/export.h"
-
 namespace algos {
-enum class DESBORDANTE_EXPORT PfdErrorMeasure : char { kPerTuple = 0, kPerValue };
+enum class PfdErrorMeasure : char { kPerTuple = 0, kPerValue };
 
-enum class DESBORDANTE_EXPORT AfdErrorMeasure : char { kG1 = 0, kPdep, kTau, kMuPlus, kRho };
+enum class AfdErrorMeasure : char { kG1 = 0, kPdep, kTau, kMuPlus, kRho };
 }  // namespace algos

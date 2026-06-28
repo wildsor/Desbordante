@@ -3,11 +3,10 @@
 #include <cstddef>
 
 #include "core/model/sequence/timed_event_set.h"
-#include "core/util/export.h"
 
 namespace model {
 
-class DESBORDANTE_EXPORT ISequenceStream {
+class ISequenceStream {
 public:
     virtual ~ISequenceStream() = default;
 

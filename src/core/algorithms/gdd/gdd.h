@@ -9,7 +9,6 @@
 #include <variant>
 
 #include "core/algorithms/gdd/gdd_graph_description.h"
-#include "core/util/export.h"
 
 namespace model {
 
@@ -61,7 +60,7 @@ bool IsSubgraph(gdd::graph_t const& query, gdd::graph_t const& graph);
 
 }  // namespace gdd::detail
 
-class DESBORDANTE_EXPORT Gdd {
+class Gdd {
 public:
     using Phi = std::vector<gdd::detail::DistanceConstraint>;
 
