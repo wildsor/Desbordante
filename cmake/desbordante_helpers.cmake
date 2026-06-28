@@ -56,10 +56,6 @@ function(desbordante_add_lib name)
 
     set_target_properties(${full_name} PROPERTIES LINK_LIBRARIES_ONLY_TARGETS ON)
 
-    # Set hidden visibility for object symbols for smaller and faster loading binaries
-    set_target_properties(${full_name} PROPERTIES CXX_VISIBILITY_PRESET "hidden")
-    set_target_properties(${full_name} PROPERTIES VISIBILITY_INLINES_HIDDEN TRUE)
-
     if(ARGV1 STREQUAL "INTERFACE")
         target_link_libraries(${full_name} INTERFACE ${DESBORDANTE_PREFIX}.compile_feats)
         target_sources(
