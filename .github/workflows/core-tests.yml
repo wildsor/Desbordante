@@ -94,6 +94,7 @@ jobs:
           else
             ./build.sh
           fi
+          cat build/build.ninja
       - name: Test
         working-directory: ${{github.workspace}}/build
         shell: bash
