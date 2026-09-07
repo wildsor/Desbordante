@@ -48,8 +48,8 @@ public:
     static long double CalculatePdepMeasure(model::PLIWithSingletons const* x_pli,
                                             model::PLIWithSingletons const* xa_pli);
 
-    static long double CalculateG2(model::PLI const* lhs_pli, model::PLI const* rhs_pli,
-                                   size_t num_rows);
+    static long double CalculateG2Error(model::PLI const* lhs_pli, model::PLI const* rhs_pli,
+                                        size_t num_rows);
 
     static long double CalculateG3(model::PLI const* lhs_pli, model::PLI const* rhs_pli,
                                    size_t num_rows);

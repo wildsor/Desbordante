@@ -52,7 +52,7 @@ void AFDMetricCalculator::ExecuteInternal() {
 
     switch (metric_) {
         case AFDMetric::kG2:
-            result_ = CalculateG2(lhs_pli.get(), rhs_pli.get(), num_rows);
+            result_ = CalculateG2Error(lhs_pli.get(), rhs_pli.get(), num_rows);
             break;
         case AFDMetric::kTau:
             result_ = CalculateTau(lhs_pli.get(), rhs_pli.get(),
@@ -84,9 +84,8 @@ void AFDMetricCalculator::ExecuteInternal() {
     }
 }
 
-// Misleading: this is g2 error?
-long double AFDMetricCalculator::CalculateG2(model::PLI const* lhs_pli, model::PLI const* rhs_pli,
-                                             size_t num_rows) {
+long double AFDMetricCalculator::CalculateG2Error(model::PLI const* lhs_pli,
+                                                  model::PLI const* rhs_pli, size_t num_rows) {
     if (num_rows <= 0) throw std::invalid_argument("received non-positive number of rows");
 
     auto num_error_rows = 0.L;
@@ -107,7 +106,7 @@ long double AFDMetricCalculator::CalculateG3(model::PLI const* lhs_pli, model::P
                                              size_t num_rows) {
     if (num_rows <= 0) throw std::invalid_argument("received non-positive number of rows");
 
-    auto num_error_rows = 0.L;
+    auto num_correct_rows = 0.L;
 
     auto const& lhs_clusters = lhs_pli->GetIndex();
     auto pt_shared = rhs_pli->CalculateAndGetProbingTable();
@@ -118,13 +117,13 @@ long double AFDMetricCalculator::CalculateG3(model::PLI const* lhs_pli, model::P
         for (auto const& val : frequencies) {
             if (val.second > size) size = val.second;
         }
-        num_error_rows += size;
+        num_correct_rows += size;
     }
 
     unsigned int unique_rows =
             static_cast<unsigned int>(lhs_pli->GetRelationSize() - lhs_pli->GetSize());
 
-    return (num_error_rows + unique_rows) / num_rows;
+    return (num_correct_rows + unique_rows) / num_rows;
 }
 
 config::ErrorType AFDMetricCalculator::CalculateRhoMeasure(model::PLIWS const* x_pli,

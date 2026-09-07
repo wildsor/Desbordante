@@ -390,7 +390,7 @@ config::ErrorType Tane::CalculateFdError(model::PLIWS const* lhs_pli, model::PLI
             return 1 - afd_metric_calculator::AFDMetricCalculator::CalculateFI(
                                lhs_pli, rhs_pli, relation_.get()->GetNumTuplePairs());
         case model::AfdMeasure::kG2:
-            return 1 - afd_metric_calculator::AFDMetricCalculator::CalculateG2(
+            return afd_metric_calculator::AFDMetricCalculator::CalculateG2Error(
                                lhs_pli, rhs_pli, relation_.get()->GetNumTuplePairs());
         case model::AfdMeasure::kG3:
             return 1 - afd_metric_calculator::AFDMetricCalculator::CalculateG3(
